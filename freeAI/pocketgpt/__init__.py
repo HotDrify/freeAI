@@ -31,15 +31,29 @@ class Running:
           }
         )
         
-        output = {
-          "status": "OK",
-          "created": time.time(),
-          "model": "GPT-4",
-          "result": [
-            {
-              "prompt": q,
-              "content": r.text
+        if r.ok:
+            output = {
+              "status": ["OK"],
+              "created": time.time(),
+              "model": "GPT-4",
+              "result": [
+                {
+                  "prompt": q,
+                  "content": r.text
+                }
+              ]
             }
-          ]
-        }
+        else:
+            output = {
+              "status": [
+                {
+                  "code": r.status_code
+                }
+              ],
+              "created": time.time(),
+              "model": "GPT-4",
+              "result": [
+                {}
+              ]
+            }
         return output
