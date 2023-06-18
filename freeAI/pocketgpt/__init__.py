@@ -4,7 +4,6 @@
 @ GiT : https://github.com/HotDrify/freeAI
 """
 import requests
-import json
 import time
 from fake_useragent import UserAgent
 
