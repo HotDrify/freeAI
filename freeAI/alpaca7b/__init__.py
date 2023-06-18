@@ -27,7 +27,7 @@ class Running:
           "result": [
             {
               "prompt": q,
-              "content": resp['completion']
+              "content": r['completion']
             }
           ]
         }
