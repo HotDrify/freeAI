@@ -21,4 +21,4 @@ result:
 }
 ```
 Function's
-* Running.main(q = str, proxies = json: None)
+* Running.main(q = **str**, proxies = json: **None**)
