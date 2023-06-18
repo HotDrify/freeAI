@@ -21,4 +21,4 @@ result:
 }
 ```
 Function's
-* Running.main(q = str, proxies = json: None, model = str: gpt-4, plugin = str: vanilla, temperature = int: 1)
+* Running.main(q = **str**, proxies = json: **None**, model = str: **gpt-4**, plugin = str: **vanilla**, temperature = int: **1**)
