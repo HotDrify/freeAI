@@ -32,6 +32,7 @@ class Running:
         )
         
         output = {
+          "status": "OK",
           "created": time.time(),
           "model": "GPT-4",
           "result": [
