@@ -23,11 +23,11 @@ class Running:
         
         output = {
           "created": time.time(),
-          "model": "alpaca-7b",
+          "model": "alpaca-7B",
           "result": [
             {
               "prompt": q,
-              "content": r.json()
+              "content": r.text
             }
           ]
         }
