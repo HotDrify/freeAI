@@ -8,21 +8,18 @@ import json
 import time
 from fake_useragent import UserAgent
 
-ua = UserAgent()
-
+headers = {
+  "User-Agent": UserAgent().random,
+  "Accept": "*/*",
+  "Accept-Language": "ru-RU,ru;q==0.8,en-US;q=0.5,en;q=0.3",
+  "Content-Type": "application/json",
+  "Sec-Fetch-Deskt": "empty",
+  "Sec-Fetch-Mode": "cors",
+  "Sec-Fetch-Site": "same-origin"
+}
 class Running:
     @staticmethod
-    def main(q):
-        headers = {
-          "User-Agent": ua.random,
-          "Accept": "*/*",
-          "Accept-Language": "ru-RU,ru;q==0.8,en-US;q=0.5,en;q=0.3",
-          "Content-Type": "application/json",
-          "Sec-Fetch-Deskt": "empty",
-          "Sec-Fetch-Mode": "cors",
-          "Sec-Fetch-Site": "same-origin"
-        }
-        payload = {
+    def main(q, proxies = None):
           "prompt": q,
           "model": "gpt-4",
           "plugin": "vanilla"
@@ -30,8 +27,13 @@ class Running:
         
         r = requests.post(
           "http://pocketgpt.000webhostapp.com/api/chat/completions/",
-          headers=headers, 
-          data=json.dumps(payload)
+          proxies = proxies,
+          headers = headers, 
+          data = {
+            "prompt": q,
+            "model": "gpt-4",
+            "plugin": "vanilla"
+          }
         )
         
         output = {
