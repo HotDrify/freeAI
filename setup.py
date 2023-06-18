@@ -9,4 +9,6 @@ setuptools.setup(
   description = "this is a python package to use the completely free chatGPT and more models.",
   long_description = README,
   url = "https://github.com/HotDrify/freeAI",
-  author = "HotDrify"
+  author = "HotDrify",
+  license = "Apache License 2.0",
+  
