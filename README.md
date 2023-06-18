@@ -11,3 +11,4 @@ git clone https://github.com/HotDrify/freeAI
 cd freeAI
 python3 setup.py install
 ```
+done!
