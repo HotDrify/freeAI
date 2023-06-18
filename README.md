@@ -5,6 +5,7 @@ this is a python package to use the completely free chatGPT and more models.
 | SITE | AI |
 | ---- | -- |
 | [pocketGPT](https://pocketgpt.000webhostapp.com) | GPT-4 |
+| [alpaca-7B](https://us-central1-arched-keyword-306918.cloudfunctions.net/) | alpaca |
 ## Installation
 ```sh
 git clone https://github.com/HotDrify/freeAI
