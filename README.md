@@ -4,7 +4,7 @@ this is a python package to use the completely free chatGPT and more models.
 
 | SITE | AI |
 | ---- | -- |
-| [pocketGPT](pocketgpt.000webhostapp.com) | GPT-4 |
+| [pocketGPT](https://pocketgpt.000webhostapp.com) | GPT-4 |
 ## Installation
 ```sh
 git clone https://github.com/HotDrify/freeAI
