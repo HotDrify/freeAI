@@ -19,15 +19,16 @@ headers = {
 }
 class Running:
     @staticmethod
-    def main(q, proxies = None):
+    def main(q, proxies = None, model = "gpt-4", plugin = "vanilla", temperature = 1):
         r = requests.post(
           "http://pocketgpt.000webhostapp.com/api/chat/completions/",
           proxies = proxies,
           headers = headers, 
           data = {
             "prompt": q,
-            "model": "gpt-4",
-            "plugin": "vanilla"
+            "model": model,
+            "plugin": plugin,
+            "temperature": temperature
           }
         )
         
