@@ -1,3 +1,7 @@
 # freeAI
 this is a python package to use the completely free chatGPT and more models.
-(currently being developed.)
+(This package is under development. There may be a bugs)
+
+| SITE | AI |
+| ---- | -- |
+| pocketgpt.000webhostapp.com | GPT-4 |
