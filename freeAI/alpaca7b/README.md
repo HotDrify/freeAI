@@ -30,7 +30,7 @@ result(error):
     }
   ],
   'created': 1687115742.184269,
-  'model': 'GPT-4',
+  'model': 'alpaca-7B',
   'result': [
     {}
   ]
