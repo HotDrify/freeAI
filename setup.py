@@ -11,4 +11,23 @@ setuptools.setup(
   url = "https://github.com/HotDrify/freeAI",
   author = "HotDrify",
   license = "Apache License 2.0",
-  
+  keywords = [
+    "chatBot",
+    "freeAI",
+    "freeGPT",
+    "freeChatGPT",
+    "gptfree",
+    "freeAPI",
+    "python",
+    "api",
+  ],
+  python_requires = ">=3.8",
+  classifiers = [
+
+        "Programming Language :: Python :: 3",
+
+        "License :: OSI Approved :: MIT License",
+
+        "Operating System :: OS Independent",
+
+
