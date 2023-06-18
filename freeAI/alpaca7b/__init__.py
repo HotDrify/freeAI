@@ -20,15 +20,29 @@ class Running:
             "prompt": q
           }
         )
-        
-        output = {
-          "created": time.time(),
-          "model": "alpaca-7B",
-          "result": [
-            {
-              "prompt": q,
-              "content": r.text
+        if r.ok:
+            output = {
+              "status": ["OK"],
+              "created": time.time(),
+              "model": "alpaca-7B",
+              "result": [
+                {
+                  "prompt": q,
+                  "content": r.json()['completion']
+                }
+              ]
             }
-          ]
-        }
+        else:
+            output = {
+              "status": [
+                {
+                  "code": r.status_code
+                }
+              ],
+              "created": time.time(),
+              "model": "alpaca-7B",
+              "result": [
+                {}
+              ]
+            }
         return output
