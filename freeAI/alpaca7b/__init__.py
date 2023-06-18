@@ -27,7 +27,7 @@ class Running:
           "result": [
             {
               "prompt": q,
-              "content": r.text
+              "content": r.json()
             }
           ]
         }
