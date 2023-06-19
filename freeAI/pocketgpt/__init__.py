@@ -1,59 +1,53 @@
 """
 @ Author : HotDrify
-@ Type : pocketGPT-4
+@ Type : AI-assist
 @ GiT : https://github.com/HotDrify/freeAI
 """
-import requests
-import time
+import urllib.request
+import json
 from fake_useragent import UserAgent
 
 headers = {
   "User-Agent": UserAgent().random,
-  "Accept": "*/*",
-  "Accept-Language": "ru-RU,ru;q==0.8,en-US;q=0.5,en;q=0.3",
-  "Content-Type": "application/json",
-  "Sec-Fetch-Deskt": "empty",
-  "Sec-Fetch-Mode": "cors",
-  "Sec-Fetch-Site": "same-origin"
+  "Content-type": "application/json"
 }
 class Running:
     @staticmethod
-    def main(q, proxies = None, model = "gpt-4", plugin = "vanilla", temperature = 1):
-        r = requests.post(
-          "http://pocketgpt.000webhostapp.com/api/chat/completions/",
-          proxies = proxies,
-          headers = headers, 
+    def main(
+        proxies = None,
+        systemMessage: str = "You are a helpful assistant",
+        q,
+        parentMessageId: str = "",
+        temperature: float = 0.8,
+        top_p: float = 1,
+    ):
+        json_data = {
+            "prompt": q,
+            "options": {"parentMessageId": parentMessageId},
+            "systemMessage": systemMessage,
+            "temperature": temperature,
+            "top_p": top_p,
+        }
+        req = urllib.request.Request(
+          "http://43.153.7.56:8080/api/chat-process",
           data = {
             "prompt": q,
-            "model": model,
-            "plugin": plugin,
-            "temperature": temperature
-          }
+            "options": {
+              "parentMessageId": parentMessageId
+            },
+            "systemMessage": systemMessage,
+            "temperature": temperature,
+            "top_p": top_p
+          },
+          headers = headers
+          proxies = proxies
         )
-        
-        if r.ok:
-            output = {
-              "status": ["OK"],
-              "created": time.time(),
-              "model": "GPT-4",
-              "result": [
-                {
-                  "prompt": q,
-                  "content": r.text
-                }
-              ]
-            }
-        else:
-            output = {
-              "status": [
-                {
-                  "code": r.status_code
-                }
-              ],
-              "created": time.time(),
-              "model": "GPT-4",
-              "result": [
-                {}
-              ]
-            }
-        return output
+        r = urllib.request.urlopen(req)
+        content = r.read().decode()
+        return Running.__get_json(content)
+
+    @classmethod
+    def __load_json(cls, content) -> dict:
+        split = content.rsplit("\n", 1)[1]
+        to_json = json.loads(split)
+        return to_json
