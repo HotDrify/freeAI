@@ -15,7 +15,8 @@ python3 setup.py install
 done!
 
 ## task list
-[ x ] add GPT 3.5-turbo
-[ ] add GPT 4
-[ ] add messages history
-[ ] add image AI
+- [x] add GPT 3.5-turbo
+- [x] add alpaca 7B
+- [ ] add GPT 4
+- [ ] add messages history
+- [ ] add image AI
