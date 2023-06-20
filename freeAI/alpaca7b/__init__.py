@@ -16,7 +16,7 @@ class Running:
         r = requests.post(
           "https://us-central1-arched-keyword-306918.cloudfunctions.net/run-inference-1",
           proxies = proxies,
-          data = {
+          json = {
             "prompt": q
           }
         )
