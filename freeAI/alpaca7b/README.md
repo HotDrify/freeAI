@@ -2,9 +2,14 @@
 Example usage:
 ```python
 from freeAI import alpaca7b
+import asyncio
 
-response = alpaca7b.Running.main("Hello! what language model are you?")
-print(response)
+async def main():
+    result = alpaca7b.Running.main("Hello! what language model are you?")
+    print(result)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
 ```
 
 result(OK):
