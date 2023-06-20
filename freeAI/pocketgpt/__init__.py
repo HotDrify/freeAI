@@ -27,7 +27,7 @@ class Running:
                 "prompt": q,
                 "model": "gpt-4",
                 "plugin": "vanilla"
-            }
+            },
             proxy = proxies
           ) as response:
               if response.ok:
