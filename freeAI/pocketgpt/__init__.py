@@ -19,40 +19,41 @@ headers = {
 }
 class Running:
     @staticmethod
-    async def main(q, proxies = None):
-      async with aiohttp.ClientSession(headers=headers) as session:
-          async with session.post(
-            "http://pocketgpt.000webhostapp.com/api/chat/completions/",
-            data={
-                "prompt": q,
-                "model": "gpt-4",
-                "plugin": "vanilla"
-            },
-            proxy = proxies
-          ) as response:
-              if response.ok:
-                  output = {
-                    "status": ["OK"],
-                    "created": time.time(),
-                    "model": "pocketGPT-4",
-                    "result": [
-                      {
+    async def main(q, proxies=None):
+        async with aiohttp.ClientSession(headers=headers) as session:
+            async with session.post(
+                    "http://pocketgpt.000webhostapp.com/api/chat/completions/",
+                    data = {
                         "prompt": q,
-                        "content": await response.text
-                      }
-                    ]
-                  }
-              else:
-                  output = {
-                    "status": [
-                      {
-                        "code": response.status
-                      }
-                    ],
-                    "created": time.time(),
-                    "model": "pocketGPT-4",
-                    "result": [
-                      {}
-                    ]
-                  }
-      return output
+                        "model": "gpt-4",
+                        "plugin": "vanilla"
+                    },
+                    proxy = proxies
+            ) as response:
+                text = await response.text
+                if response.ok:
+                    output = {
+                        "status": ["OK"],
+                        "created": time.time(),
+                        "model": "pocketGPT-4",
+                        "result": [
+                            {
+                                "prompt": q,
+                                "content": text
+                            }
+                        ]
+                    }
+                else:
+                    output = {
+                        "status": [
+                            {
+                                "code": response.status
+                            }
+                        ],
+                        "created": time.time(),
+                        "model": "pocketGPT-4",
+                        "result": [
+                            {}
+                        ]
+                    }
+        return output
