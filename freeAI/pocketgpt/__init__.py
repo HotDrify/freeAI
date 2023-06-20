@@ -22,6 +22,7 @@ class Running:
     async def main(q, proxies = None):
       async with aiohttp.ClientSession(headers=headers) as session:
           async with session.post(
+            "http://pocketgpt.000webhostapp.com/api/chat/completions/",
             data={
                 "prompt": q,
                 "model": "gpt-4",
