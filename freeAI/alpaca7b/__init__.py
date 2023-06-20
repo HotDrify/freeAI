@@ -23,6 +23,7 @@ class Running:
                     },
                     proxy = proxies
             ) as response:
+                text = await response.json()
                 if response.ok:
                     output = {
                         "status": ["OK"],
@@ -31,7 +32,7 @@ class Running:
                         "result": [
                             {
                                 "prompt": q,
-                                "content": await response.json()['completion']
+                                "content": text['completion']
                             }
                         ]
                     }
