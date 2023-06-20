@@ -69,7 +69,7 @@ class Running:
                             }
                         ],
                         "created": time.time(),
-                        "model": "mishalsGPT-3.5-turbo",
+                        "model": "GPT-3.5-turbo",
                         "result": [
                             {}
                         ]
