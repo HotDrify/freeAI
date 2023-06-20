@@ -6,6 +6,7 @@ this is a python package to use the completely free chatGPT and more models.
 | ---- | ----- | ----------- |
 | [alpaca-7B](https://us-central1-arched-keyword-306918.cloudfunctions.net/) | alpaca | [use](freeAI/alpaca7b/README.md) |
 | [mishalsGPT](https://mishalsgpt.vercel.app) | GPT-3.5-turbo | [use](freeAI/mishalsgpt/README.md) |
+| [miniGPT](https://mflsf.aitianhu.fun) | GPT-3.5-turbo | [use](freeAI/minigpt/README.md) |
 ## Installation
 ```sh
 git clone https://github.com/HotDrify/freeAI
