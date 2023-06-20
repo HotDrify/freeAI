@@ -5,7 +5,7 @@ from freeAI import mishalsgpt
 import asyncio
 
 async def main():
-    result = mishalsgpt.Running.main("Hello! what language model are you?")
+    result = await mishalsgpt.Running.main("Hello! what language model are you?")
     print(result)
 
 loop = asyncio.get_event_loop()
