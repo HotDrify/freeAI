@@ -14,7 +14,7 @@ headers = {
 
 class Running:
     @staticmethod
-    async def main(q, proxies=None):
+    async def amain(q, proxies=None):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://us-central1-arched-keyword-306918.cloudfunctions.net/run-inference-1",
