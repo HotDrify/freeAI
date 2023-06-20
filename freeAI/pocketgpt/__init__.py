@@ -3,7 +3,8 @@
 @ Type : GPT-4
 @ GiT : https://github.com/HotDrify/freeAI
 """
-import requests
+import aiohttp
+import asyncio
 import time
 from fake_useragent import UserAgent
 
@@ -18,41 +19,39 @@ headers = {
 }
 class Running:
     @staticmethod
-    def main(q, proxies = None):
-      json = {
-        "prompt": q,
-        "model": "gpt-4",
-        "plugin": "vanilla"
-      }
-      r = requests.post(
-        "http://pocketgpt.000webhostapp.com/api/chat/completions/",
-        headers = headers,
-        data = json,
-        proxies = proxies
-      )
-      if r.ok:
-          output = {
-            "status": ["OK"],
-            "created": time.time(),
-            "model": "pocketGPT-4",
-            "result": [
-              {
-                "prompt": q,
-                "content": r.text
-              }
-            ]
-          }
-      else:
-          output = {
-            "status": [
-              {
-                "code": r.status_code
-              }
-            ],
-            "created": time.time(),
-            "model": "pocketGPT-4",
-            "result": [
-              {}
-            ]
-          }
+    async def main(q, proxies = None):
+      async with aiohttp.ClientSession(headers=headers) as session:
+          async with session.post(
+            data = {
+              "prompt": q,
+              "model": "gpt-4",
+              "plugin": "vanilla"
+            }
+            proxy = proxies
+          ) as response:
+              if response.ok:
+                  output = {
+                    "status": ["OK"],
+                    "created": time.time(),
+                    "model": "pocketGPT-4",
+                    "result": [
+                      {
+                        "prompt": q,
+                        "content": await response.text
+                      }
+                    ]
+                  }
+              else:
+                  output = {
+                    "status": [
+                      {
+                        "code": response.status
+                      }
+                    ],
+                    "created": time.time(),
+                    "model": "pocketGPT-4",
+                    "result": [
+                      {}
+                    ]
+                  }
       return output
