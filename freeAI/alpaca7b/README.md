@@ -5,7 +5,7 @@ from freeAI import alpaca7b
 import asyncio
 
 async def main():
-    result = alpaca7b.Running.main("Hello! what language model are you?")
+    result = await alpaca7b.Running.main("Hello! what language model are you?")
     print(result)
 
 loop = asyncio.get_event_loop()
