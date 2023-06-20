@@ -22,10 +22,10 @@ class Running:
     async def main(q, proxies = None):
       async with aiohttp.ClientSession(headers=headers) as session:
           async with session.post(
-            data = {
-              "prompt": q,
-              "model": "gpt-4",
-              "plugin": "vanilla"
+            data={
+                "prompt": q,
+                "model": "gpt-4",
+                "plugin": "vanilla"
             }
             proxy = proxies
           ) as response:
