@@ -1,7 +1,9 @@
 # freeAI
 there will be changes of all versions.
 
-## 1.1.2 (latest)
+## 1.1.3 (latest)
+> added new model "gpt4" (GPT-4)
+## 1.1.2
 > added new model "miniGPT" (GPT-3.5-turbo)
 ## 1.1.1
 > added new model "mishalsGPT" (GPT-3.5-turbo)
