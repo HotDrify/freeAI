@@ -43,3 +43,10 @@ result(error):
 ```
 Function's
 * Running.main(q = **str**, proxies = json: **None**, model = str: **gpt-4**)
+## model's
+* gpt-4 - **chatGPT 4**
+* gpt-3.5-turbo - **chatGPT 3.5-turbo**
+* saga - **SAGA**
+* claude+ - **Claude +**
+* claude-instant - **Claude Instant**
+* claude-instant-100k - **Claude Instant 100.000**
