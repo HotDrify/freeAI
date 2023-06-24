@@ -23,3 +23,6 @@ done!
 - [x] add GPT 4
 - [ ] add messages history
 - [ ] add image AI
+
+## status check
+[go to actions](/actions)
