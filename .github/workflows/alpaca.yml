@@ -1,9 +1,27 @@
-name: alpaca 7B
+name: API monitoring
 on:
   schedule:
     - cron: "10 * * * *"
 jobs:
-  check-status:
+  avagpt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        id: avagpt
+        uses: fjogeleit/http-request-action@v1.14.0
+        with:
+          url: 'https://ava-alpha-api.codelink.io/api/chat'
+          method: 'POST'
+          customHeaders: '{"User-Agent": "Mozilla/5.0 (Linux; Android 7.0; S51) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36", "accept": "application/json"}'
+          data: '{"model": "gpt-4", "temperature": 0.5, "stream": True, "messages": [{"role": "user", "content": "hi"}]}'
+      - name:
+        run: |
+          if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
+            echo "ONLINE"
+          else
+            echo "OFFLINE"
+          fi
+  alpaca:
     runs-on: ubuntu-latest
     steps:
       - name: check
@@ -14,7 +32,7 @@ jobs:
           method: 'POST'
           customHeaders: '{"User-Agent": "Mozilla/5.0 (Linux; Android 7.0; S51) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36"}'
           data: '{"prompt": "hi!"}'
-      - name: output
+      - name: alpaca-get
         run: |
           if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
             echo "ONLINE"
