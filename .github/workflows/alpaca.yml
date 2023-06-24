@@ -3,21 +3,20 @@ on:
   schedule:
     - cron: "10 * * * *"
 jobs:
-  build:
-    runs-on: ubuntu-lastest
-    check-status:
-      steps:
-        - name: alpaca-7B check status
-          id: alpaca
-          uses: fjogeleit/http-request-action@v1.14.0
-          with:
-            url: 'https://us-central1-arched-keyword-306918.cloudfunctions.net/run-inference-1'
-            method: 'POST'
-            data: '{"prompt": "hi!"}'
-        - name: Check response
-          run: |
-            if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
-              echo "ONLINE"
-            else
-              echo "OFFLINE"
-            fi
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: alpaca-7B check status
+        id: alpaca
+        uses: fjogeleit/http-request-action@v1.14.0
+        with:
+          url: 'https://us-central1-arched-keyword-306918.cloudfunctions.net/run-inference-1'
+          method: 'POST'
+          data: '{"prompt": "hi!"}'
+      - name: Check response
+        run: |
+          if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
+            echo "ONLINE"
+          else
+            echo "OFFLINE"
+          fi
