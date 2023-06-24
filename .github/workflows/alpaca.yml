@@ -17,9 +17,9 @@ jobs:
       - name:
         run: |
           if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
-            echo "ONLINE"
+            echo "avaGPT: ONLINE"
           else
-            echo "OFFLINE"
+            echo "avaGPT: OFFLINE"
           fi
   alpaca:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
       - name: alpaca-get
         run: |
           if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
-            echo "ONLINE"
+            echo "alpaca-7B: ONLINE"
           else
-            echo "OFFLINE"
+            echo "alpaca-7B: OFFLINE"
           fi
