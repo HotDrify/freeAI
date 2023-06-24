@@ -13,7 +13,7 @@ jobs:
           url: 'https://ava-alpha-api.codelink.io/api/chat'
           method: 'POST'
           customHeaders: '{"User-Agent": "Mozilla/5.0 (Linux; Android 7.0; S51) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36", "accept": "application/json"}'
-          data: '{"model": "gpt-4", "temperature": 0.5, "stream": True, "messages": [{"role": "user", "content": "hi"}]}'
+          data: '{"model": "gpt-4", "temperature": 0.5, "stream": true, "messages": [{"role": "user", "content": "hi"}]}'
       - name:
         run: |
           if echo "${{ steps.avagpt.outputs.response }}" | grep -q "completion"; then
