@@ -25,4 +25,4 @@ done!
 - [ ] add image AI
 
 ## status check
-[go to actions](/actions)
+[go to actions](https://github.com/HotDrify/freeAI/actions)
