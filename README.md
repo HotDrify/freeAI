@@ -25,5 +25,5 @@ done!
 - [ ] add image AI
 
 ## status check
-> when is it updated? > once every 10 min.
-[go to actions](https://github.com/HotDrify/freeAI/actions)
+> when is it updated? > once every **~30 min**.
+> where to find? > [go to actions](https://github.com/HotDrify/freeAI/actions)
