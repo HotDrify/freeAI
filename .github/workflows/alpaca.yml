@@ -1,0 +1,31 @@
+name: Check Status
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send POST request
+        uses: actions/http-request@v1
+        with:
+          url: https://us-central1-arched-keyword-306918.cloudfunctions.net/run-inference-1
+          method: POST
+          data: |
+            {
+              "prompt": "hello!"
+            }
+          headers: |
+            {
+              "Content-Type": "application/json"
+            }
+        id: response
+      - name: Check response
+        run: |
+          if echo "${{ steps.response.outputs.body }}" | grep -q "completion"; then
+            echo "ONLINE"
+          else
+            echo "OFFLINE"
+          fi
