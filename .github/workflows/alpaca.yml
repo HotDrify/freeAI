@@ -1,4 +1,4 @@
-name: Check Status
+name: alpaca 7B
 on:
   schedule:
     - cron: "10 * * * *"
@@ -6,7 +6,7 @@ jobs:
   check-status:
     runs-on: ubuntu-latest
     steps:
-      - name: alpaca-7B check status
+      - name: check
         id: alpaca
         uses: fjogeleit/http-request-action@v1.14.0
         with:
@@ -14,7 +14,7 @@ jobs:
           method: 'POST'
           customHeaders: '{"User-Agent": "Mozilla/5.0 (Linux; Android 7.0; S51) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36"}'
           data: '{"prompt": "hi!"}'
-      - name: Check response
+      - name: output
         run: |
           if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
             echo "ONLINE"
