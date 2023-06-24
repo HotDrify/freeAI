@@ -3,6 +3,7 @@ on:
   schedule:
     - cron: "10 * * * *"
 jobs:
+  runs-on: ubuntu-lastest
   check-status:
     steps:
       - name: alpaca-7B check status
