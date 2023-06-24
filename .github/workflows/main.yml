@@ -1,0 +1,67 @@
+name: API monitoring
+
+on:
+
+  schedule:
+
+    - cron: "10 * * * *"
+
+jobs:
+
+  avagpt:
+
+    name: avaGPT
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+
+      matrix:
+
+        os: [ubuntu-latest]
+
+    steps:
+
+      - name: get sources
+
+        uses: actions/checkout@v3
+
+      - name: send
+
+        id: res
+
+        uses: ./
+
+        with:
+
+          url: 'https://ava-alpha-api.codelink.io/api/chat'
+
+          method: post
+
+          data: '{"model": "gpt-4", "temperature": 0.5, "stream": true, "messages": {"role": "user", "content": "you online?(do not answer anything else, except yes or no.)"}'
+
+      - name: get status code
+
+        run: echo ${{ steps.request.outputs.status }}
+
+        shell: bash
+
+      - name: get output
+
+        run: echo ${{ steps.request.outputs.response }}
+
+        shell: bash
+
+      - name: online status
+
+        run: |
+
+        if grep -q "content" <<< "$text"; then
+
+          echo "avaGPT is online"
+
+        else
+
+          echo "avaGPT is offline"
+
+        fi
