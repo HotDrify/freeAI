@@ -16,7 +16,7 @@ jobs:
           data: '{"model": "gpt-4", "temperature": 0.5, "stream": True, "messages": [{"role": "user", "content": "hi"}]}'
       - name:
         run: |
-          if echo "${{ steps.alpaca.outputs.response }}" | grep -q "completion"; then
+          if echo "${{ steps.avagpt.outputs.response }}" | grep -q "completion"; then
             echo "avaGPT: ONLINE"
           else
             echo "avaGPT: OFFLINE"
