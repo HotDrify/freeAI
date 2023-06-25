@@ -24,5 +24,5 @@ done!
 - [ ] add messages history
 - [ ] add image AI
 
-## status check
+## status check (soon)
 > when is it updated? > once every **~30 min**. [go to actions](https://github.com/HotDrify/freeAI/actions)
