@@ -24,7 +24,7 @@ class Running:
             async with session.post(
                     "http://124.222.157.84:3700/v1/chat/completions",
                     json = {
-                      "messages": msg,
+                      "messages": messages,
                       "model": model,
                       "temperature": temperature,
                       "presence_penalty": 0,
