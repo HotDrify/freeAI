@@ -40,7 +40,7 @@ class Running:
                     data = json.loads(line)
                     try:
                         out = data['choices'][0]['delta']['content']
-                    except:
+                    except Exception as err:
                         pass
                 if response.ok:
                     output = {
