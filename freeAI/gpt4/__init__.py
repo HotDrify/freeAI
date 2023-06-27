@@ -19,7 +19,7 @@ headers = {
 }
 class Running:
     @staticmethod
-    async def main(msg, proxies = None, temperature = 1, model = "gpt-4"):
+    async def main(messages, proxies = None, temperature = 1, model = "gpt-4"):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "http://124.222.157.84:3700/v1/chat/completions",
