@@ -5,7 +5,7 @@ from freeAI import avagpt
 import asyncio
 
 async def main():
-    result = await avagpt.Running.main("Hello! what language model are you?")
+    result = await avagpt.Running.main([{"role": "user", "content": "Hello! what language model are you?"}])
     print(result)
 
 loop = asyncio.get_event_loop()
@@ -20,7 +20,7 @@ result(OK):
   'model': 'GPT-4',
   'result': [
     {
-      'prompt': 'Hello! what language model are you?',
+      'messages': [{"role": "user", "content": "Hello! what language model are you?"}],
       'content': 'I am an AI language model called GPT-4, which stands for "Generative Pre-trained Transformer 3". I was created by OpenAI, and I'm one of the most advanced AI language models currently available. I can understand and respond to a wide variety of natural language queries and tasks, ranging from simple questions to complex writing and translation tasks.'
     }
   ]
@@ -42,4 +42,4 @@ result(error):
 }
 ```
 Function's
-* Running.main(q = **str**, proxies = json: **None**)
+* Running.main(messages = **list**, proxies = json: **None**, temperature = int: **1**)
