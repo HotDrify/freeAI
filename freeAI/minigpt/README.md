@@ -42,4 +42,4 @@ result(error):
 }
 ```
 Function's
-* Running.main(q = **str**, proxies = json: **None**)
+* Running.main(q = **str**, proxies = json: **None**, temperature = int: **1**)
