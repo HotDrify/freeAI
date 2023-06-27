@@ -9,6 +9,7 @@ this is a python package to use the completely free chatGPT and more models.
 | [miniGPT](https://mflsf.aitianhu.fun) | GPT-3.5-turbo | [use](freeAI/minigpt/README.md) |
 | [gpt-4](http://124.222.157.84:8012) | GPT-4 / [check more](freeAI/gpt4/README.md#models) | [use](freeAI/gpt4/README.md) |
 | [avaGPT](https://codelink.io/) | GPT-4 | [use](freeAI/avagpt/README.md) |
+| [lockGPT](http://lockchat.app) | GPT-3.5-turbo | [use](freeAI/lockgpt/README.md) |
 ## Installation
 ```sh
 git clone https://github.com/HotDrify/freeAI
@@ -21,7 +22,7 @@ done!
 - [x] add GPT 3.5-turbo
 - [x] add alpaca 7B
 - [x] add GPT 4
-- [ ] add messages history
+- [x] add messages history
 - [ ] add image AI
 
 ## status check (soon)
