@@ -19,14 +19,14 @@ headers = {
 }
 class Running:
     @staticmethod
-    async def main(q, proxies = None, model = "gpt-4"):
+    async def main(messages, proxies = None, temperature = 1, model = "gpt-4"):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "http://124.222.157.84:3700/v1/chat/completions",
                     json = {
-                      "messages": [{"role":"user","content":q}],
+                      "messages": messages,
                       "model": model,
-                      "temperature": 1,
+                      "temperature": temperature,
                       "presence_penalty": 0,
                       "top_p": 1,
                       "frequency_penalty": 0,
@@ -52,7 +52,7 @@ class Running:
                         "model": "GPT-4",
                         "result": [
                             {
-                                "prompt": q,
+                                "messages": messages,
                                 "content": resout
                             }
                         ]
