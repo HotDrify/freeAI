@@ -16,24 +16,15 @@ headers = {
 
 class Running:
     @staticmethod
-    async def main(q, proxies=None):
+    async def main(messages, proxies = None, temperature = 1):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://mishalsgpt.vercel.app/api/openai/v1/chat/completions",
                     json = {
-                      "messages": [
-                        {
-                          "role": "system",
-                          "content": "IMPORTANT: You are Asisstl"
-                        },
-                        {
-                          "role": "user",
-                          "content": q
-                        }
-                      ],
+                      "messages": messages,
                       "stream": True,
                       "model": "gpt-3.5-turbo",
-                      "temperature": 0.9,
+                      "temperature": temperature,
                       "presence_penalty": 2,
                       "frequency_penalty": 0
                     },
@@ -56,7 +47,7 @@ class Running:
                         "model": "GPT-3.5-turbo",
                         "result": [
                             {
-                                "prompt": q,
+                                "messages": messages,
                                 "content": resout
                             }
                         ]
