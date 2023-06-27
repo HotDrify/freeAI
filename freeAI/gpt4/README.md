@@ -5,7 +5,7 @@ from freeAI import gpt4
 import asyncio
 
 async def main():
-    result = await gpt4.Running.main("Hello! what language model are you?")
+    result = await gpt4.Running.main([{"role": "user", "content": "Hello! what language model are you?"}])
     print(result)
 
 loop = asyncio.get_event_loop()
@@ -20,7 +20,7 @@ result(OK):
   'model': 'GPT 4',
   'result': [
     {
-      'prompt': 'Hello! what language model are you?',
+      'messages': [{"role": "user", "content": "Hello! what language model are you?"}],
       'content': 'Hello! I am GPT-4, a large language model trained by OpenAI. I am designed to assist with answering questions, providing information, and engaging in conversation. How can I help you today?'
     }
   ]
@@ -42,7 +42,7 @@ result(error):
 }
 ```
 Function's
-* Running.main(q = **str**, proxies = json: **None**, model = str: **gpt-4**)
+* Running.main(messages = **list**, proxies = json: **None**, temperature = int: **1**, model = str: **gpt-4**)
 ## model's
 * gpt-4 - **chatGPT 4**
 * gpt-3.5-turbo - **chatGPT 3.5-turbo**
