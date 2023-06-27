@@ -1,7 +1,11 @@
 # freeAI
 there will be changes of all versions.
 
-## 1.1.4 (latest)
+## 1.1.5 (latest)
+> added new model "lockGPT" (GPT-3.5-turbo)
+> added messages history
+> added temperature argument
+## 1.1.4
 > added new model "avaGPT" (GPT-4)
 ## 1.1.3
 > added new model "gpt4" (GPT-4)
