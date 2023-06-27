@@ -20,7 +20,7 @@ headers = {
 }
 class Running:
     @staticmethod
-    async def main(q, proxies=None):
+    async def main(q, proxies = None, temperature = 1):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://mflsf.aitianhu.fun/api/chat-process",
@@ -28,7 +28,7 @@ class Running:
                       "prompt": q,
                       "options": {},
                       "systemMessage": "You are heplful gpt-3 assistant.",
-                      "temperature": 0.6,
+                      "temperature": temperature,
                       "top_p": 1
                     },
                     proxy = proxies
