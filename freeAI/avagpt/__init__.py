@@ -17,20 +17,15 @@ headers = {
 }
 class Running:
     @staticmethod
-    async def main(q, proxies=None):
+    async def main(messages, proxies = None, temperature = 1):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://ava-alpha-api.codelink.io/api/chat",
                     json = {
                       "model": "gpt-4",
-                      "temperature": 0.5,
+                      "temperature": temperature,
                       "stream": True,
-                      "messages": [
-                        {
-                          "role": "user",
-                          "content": q
-                        }
-                      ]
+                      "messages": messages
                     },
                     proxy = proxies
 
@@ -52,7 +47,7 @@ class Running:
                         "model": "GPT-4",
                         "result": [
                             {
-                                "prompt": q,
+                                "messages": messages,
                                 "content": resout
                             }
                         ]
