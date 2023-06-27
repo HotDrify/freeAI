@@ -41,7 +41,7 @@ class Running:
                     try:
                         out = data['choices'][0]['delta']['content']
                     except Exception as err:
-                        pass
+                        out = err
                 if response.ok:
                     output = {
                         "status": ["OK"],
