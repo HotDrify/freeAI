@@ -1,7 +1,9 @@
 # freeAI
 there will be changes of all versions.
 
-## 1.1.5 (latest)
+## 1.1.6 (latest)
+> added new model "AIchatOS" (GPT-3.5-turbo)
+## 1.1.5
 > added new model "lockGPT" (GPT-3.5-turbo)
 > added messages history
 > added temperature argument
