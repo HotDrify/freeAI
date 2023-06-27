@@ -25,7 +25,7 @@ class Running:
                     "http://124.222.157.84:3700/v1/chat/completions",
                     data = {
                       "messages": messages,
-                      "model": model,
+                      "model": "gpt-4",
                       "temperature": 1,
                       "presence_penalty": 0,
                       "top_p": 1,
