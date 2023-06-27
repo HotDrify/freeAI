@@ -40,8 +40,8 @@ class Running:
                     data = json.loads(line)
                     try:
                         out = data["text"]
-                    except Exception as err:
-                        out = err
+                    except:
+                        pass
                 if response.ok:
                     output = {
                         "status": ["OK"],
