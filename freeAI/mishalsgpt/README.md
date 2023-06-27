@@ -5,7 +5,7 @@ from freeAI import mishalsgpt
 import asyncio
 
 async def main():
-    result = await mishalsgpt.Running.main("Hello! what language model are you?")
+    result = await mishalsgpt.Running.main([{"role": "user", "content": "Hello! what language model are you?"}])
     print(result)
 
 loop = asyncio.get_event_loop()
@@ -20,7 +20,7 @@ result(OK):
   'model': 'GPT-3.5-turbo',
   'result': [
     {
-      'prompt': 'Hello! what language model are you?',
+      'messages': [{"role": "user", "content": "Hello! what language model are you?"}],
       'content': 'Hello! what language model are you?', 'content': 'I am an AI language model created by OpenAI called GPT-3. I have been trained on a diverse range of internet text in order to be able to generate human-like responses to various prompts and questions.'
     }
   ]
@@ -42,4 +42,4 @@ result(error):
 }
 ```
 Function's
-* Running.main(q = **str**, proxies = json: **None**)
+* Running.main(messages = **list**, temperature = int: **1**, proxies = json: **None**)
