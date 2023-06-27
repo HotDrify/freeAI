@@ -37,11 +37,11 @@ class Running:
                 lines = text.splitlines()
                 out = ""
                 for line in lines:
-                    data = json.loads(line)
                     try:
+                        data = json.loads(line)
                         out = data["text"]
-                    except:
-                        pass
+                    except Exception as err:
+                        out = err
                 if response.ok:
                     output = {
                         "status": ["OK"],
