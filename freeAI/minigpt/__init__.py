@@ -35,6 +35,7 @@ class Running:
             ) as response:
                 text = await response.text()
                 lines = text.splitlines()
+                out = ""
                 for line in lines:
                     data = json.loads(line)
                     try:
