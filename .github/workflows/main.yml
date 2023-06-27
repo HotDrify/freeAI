@@ -19,7 +19,7 @@ jobs:
           url: 'https://ava-alpha-api.codelink.io/api/chat'
           method: post
           headers: '{"Content-Type": "application/json", "Accept": "application/json"}'
-          data: '{"model": "gpt-4", "temperature": 0.5, "stream": true, "messages": {"role": "user", "content": "you online?(do not answer anything else, except yes or no.)"}'
+          json: '{"model": "gpt-4", "temperature": 0.5, "stream": true, "messages": {"role": "user", "content": "you online?(do not answer anything else, except yes or no.)"}'
       - name: get status code
         run: echo ${{ steps.request.outputs.status }}
         shell: bash
