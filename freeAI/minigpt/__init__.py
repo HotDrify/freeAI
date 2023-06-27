@@ -39,7 +39,7 @@ class Running:
                 for line in lines:
                     data = json.loads(line)
                     try:
-                        out = data['choices'][0]['delta']['content']
+                        out = data
                     except Exception as err:
                         out = err
                 if response.ok:
