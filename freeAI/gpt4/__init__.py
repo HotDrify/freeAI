@@ -31,7 +31,7 @@ class Running:
                       "top_p": 1,
                       "frequency_penalty": 0,
                       "stream": True,
-                      "key": "bilibili",
+                      "key": "bilibili"
                     },
                     proxy = proxies
             ) as response:
