@@ -37,8 +37,10 @@ class Running:
                 lines = text.splitlines()
                 for line in lines:
                     data = json.loads(line)
-                    if "text" in data:
-                        out = data["text"]
+                    try:
+                        out = data['choices'][0]['delta']['content']
+                    except:
+                        pass
                 if response.ok:
                     output = {
                         "status": ["OK"],
