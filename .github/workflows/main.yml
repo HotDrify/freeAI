@@ -10,17 +10,17 @@ jobs:
         run: |
           echo "You online?"
           curl -X POST \
-  https://api.aichatos.cloud/api/generateStream \
-  -H 'authority: api.aichatos.cloud' \
-  -H 'origin: https://chat9.yqcloud.top' \
-  -H 'referer: https://chat9.yqcloud.top/' \
-  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "prompt": "always reply in the user language | are you online? (Just answer yes or no.)",
-    "userId": "#/chat/'"$(($(date +%s%N)/1000000))"'",
-    "network": true,
-    "apikey": "",
-    "system": "",
-    "withoutContext": false
-  }'
+          https://api.aichatos.cloud/api/generateStream \
+          -H 'authority: api.aichatos.cloud' \
+          -H 'origin: https://chat9.yqcloud.top' \
+          -H 'referer: https://chat9.yqcloud.top/' \
+          -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "prompt": "always reply in the user language | are you online? (Just answer yes or no.)",
+            "userId": "#/chat/'"$(($(date +%s%N)/1000000))"'",
+            "network": true,
+            "apikey": "",
+            "system": "",
+            "withoutContext": false
+          }'
