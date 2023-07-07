@@ -14,9 +14,9 @@ headers = {
     "accept": "text/event-stream"
 }
 
-class Running:
+class Completion:
     @staticmethod
-    async def main(messages, proxies = None, temperature = 1):
+    async def acreate(messages, proxies = None, temperature = 1):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "http://super.lockchat.app/v1/chat/completions?auth=FnMNPlwZEnGFqvEc9470Vw==",
@@ -28,39 +28,36 @@ class Running:
                     },
                     proxy = proxies
             ) as response:
-                rtext = await response.text()
-                text = rtext.replace("data: ", "").replace("\n\n", "\n").rstrip("\n[DONE]")
-                lines = text.splitlines()
-                resout = ""
+                webText = await response.text()
+                out = webText.replace("data: ", "").replace("\n\n", "\n").rstrip("\n[DONE]")
+                lines = out.splitlines()
+                text = ""
                 for line in lines:
                     try:
                         data = json.loads(line)
-                        resout += data["choices"][0]['delta']['content']
+                        text += data["choices"][0]['delta']['content']
                     except Exception:
                         pass
                 if response.ok:
                     output = {
                         "status": ["OK"],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {
-                                "messages": messages,
-                                "content": resout
+                        "model": "gpt-3.5-turbo",
+                        "choices": [
+                          {
+                            "message": {
+                              "content": text
                             }
+                          }
                         ]
                     }
                 else:
                     output = {
-                        "status": [
-                            {
-                                "code": response.status
-                            }
-                        ],
+                        "status": ["ERR", {"code": response.code}],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {}
-                        ]
+                        "model": "gpt-3.5-turbo",
+                        "choices": []
                     }
         return output
