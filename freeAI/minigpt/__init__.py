@@ -18,9 +18,9 @@ headers = {
     "Sec-Fetch-Mode": "123",
     "Sec-Fetch-Site": "same-origin"
 }
-class Running:
+class Completion:
     @staticmethod
-    async def main(q, proxies = None, temperature = 1):
+    async def acreate(q, proxies = None, temperature = 1):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://mflsf.aitianhu.fun/api/chat-process",
@@ -33,38 +33,35 @@ class Running:
                     },
                     proxy = proxies
             ) as response:
-                text = await response.text()
-                lines = text.splitlines()
-                out = ""
+                webText = await response.text()
+                lines = webText.splitlines()
+                text = ""
                 for line in lines:
                     try:
                         data = json.loads(line)
-                        out = data["text"]
+                        text = data["text"]
                     except:
                         pass
                 if response.ok:
                     output = {
                         "status": ["OK"],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {
-                                "prompt": q,
-                                "content": out
+                        "model": "gpt-3.5-turbo",
+                        "choices": [
+                          {
+                            "message": {
+                              "content": text
                             }
+                          }
                         ]
                     }
                 else:
                     output = {
-                        "status": [
-                            {
-                                "code": response.status
-                            }
-                        ],
+                        "status": ["ERR", {"code": response.code}],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {}
-                        ]
+                        "model": "gpt-3.5-turbo",
+                        "choices": []
                     }
         return output
