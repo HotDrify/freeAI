@@ -5,7 +5,7 @@ from freeAI import gpt4
 import asyncio
 
 async def main():
-    result = await gpt4.Running.main([{"role": "user", "content": "Hello! what language model are you?"}])
+    result = await gpt4.Completion.acreate("Hello! what language model are you?")
     print(result)
 
 loop = asyncio.get_event_loop()
@@ -15,38 +15,28 @@ loop.run_until_complete(main())
 result(OK):
 ```json
 {
-  'status': ['OK']
-  'created': 1687115742.184269,
-  'model': 'GPT 4',
-  'result': [
+  "status": ["OK"],
+  "object": "chat.completion",
+  "created": time.time(),
+  "model": "gpt-4",
+  "choices": [
     {
-      'messages': [{"role": "user", "content": "Hello! what language model are you?"}],
-      'content': 'Hello! I am GPT-4, a large language model trained by OpenAI. I am designed to assist with answering questions, providing information, and engaging in conversation. How can I help you today?'
-    }
-  ]
+      "message": {
+        "content": "Hello! I am GPT-4, a large language model trained by OpenAI. I am designed to assist with answering questions, providing information, and engaging in conversation. How can I help you today?"
+       }
+     }
+   ]
 }
 ```
 result(error):
 ```json
 {
-  'status': [
-    {
-      "code": 500
-    }
-  ],
-  'created': 1687115742.184269,
-  'model': 'GPT 4',
-  'result': [
-    {}
-  ]
+  "status": ["ERR", {"code": 500}],
+  "object": "chat.completion",
+  "created": time.time(),
+  "model": "gpt-4",
+  "choices": []
 }
 ```
 Function's
-* Running.main(messages = **list**, proxies = json: **None**, temperature = int: **1**, model = str: **gpt-4**)
-## model's
-* gpt-4 - **chatGPT 4**
-* gpt-3.5-turbo - **chatGPT 3.5-turbo**
-* saga - **SAGA**
-* claude+ - **Claude +**
-* claude-instant - **Claude Instant**
-* claude-instant-100k - **Claude Instant 100.000**
+* Completion.acreate(q = **str**, proxies = json: **None**)
