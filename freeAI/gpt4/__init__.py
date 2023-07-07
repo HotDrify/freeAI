@@ -17,9 +17,9 @@ headers = {
     "Authorization": "Bearer ninomae1001",
     "referrer": "http://124.222.157.84:8012/",
 }
-class Running:
+class Completion:
     @staticmethod
-    async def main(messages, proxies = None, temperature = 1, model = "gpt-4"):
+    async def acreate(messages, proxies = None, temperature = 1, model = "gpt-4"):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "http://124.222.157.84:3700/v1/chat/completions",
@@ -35,14 +35,14 @@ class Running:
                     },
                     proxy = proxies
             ) as response:
-                rtext = await response.text()
-                text = rtext.replace("data: ", "").replace("\n\n", "\n").rstrip("\n[DONE]")
-                lines = text.splitlines()
-                resout = ""
+                webText = await response.text()
+                out = webText.replace("data: ", "").replace("\n\n", "\n").rstrip("\n[DONE]")
+                lines = out.splitlines()
+                text = ""
                 for line in lines:
                     try:
                         data = json.loads(line)
-                        resout += data["choices"][0]['delta']['content']
+                        text += data["choices"][0]['delta']['content']
                     except Exception:
                         pass
                 if response.ok:
@@ -54,7 +54,7 @@ class Running:
                         "choices": [
                           {
                             "message": {
-                              "content": resout["choices"][0]["message"]["content"]
+                              "content": text
                             }
                           }
                         ]
