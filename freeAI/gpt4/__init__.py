@@ -48,26 +48,23 @@ class Running:
                 if response.ok:
                     output = {
                         "status": ["OK"],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-4",
-                        "result": [
-                            {
-                                "messages": messages,
-                                "content": resout
+                        "model": "gpt-4",
+                        "choices": [
+                          {
+                            "message": {
+                              "content": resout["choices"][0]["message"]["content"]
                             }
+                          }
                         ]
                     }
                 else:
                     output = {
-                        "status": [
-                            {
-                                "code": response.status
-                            }
-                        ],
+                        "status": ["ERR", {"code": response.code}],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-4",
-                        "result": [
-                            {}
-                        ]
+                        "model": "gpt-4",
+                        "choices": []
                     }
         return output
