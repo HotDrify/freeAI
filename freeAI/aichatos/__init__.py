@@ -16,9 +16,9 @@ headers = {
     "referer": "https://chat9.yqcloud.top/"
 }
 
-class Running:
+class Completion:
     @staticmethod
-    async def main(q, proxies=None):
+    async def acreate(q, proxies=None):
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.post(
                     "https://api.aichatos.cloud/api/generateStream",
@@ -36,26 +36,23 @@ class Running:
                 if response.ok:
                     output = {
                         "status": ["OK"],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {
-                                "prompt": q,
-                                "content": text
+                        "model": "gpt-3.5-turbo",
+                        "choices": [
+                          {
+                            "message": {
+                              "content": text
                             }
+                          }
                         ]
                     }
                 else:
                     output = {
-                        "status": [
-                            {
-                                "code": response.status
-                            }
-                        ],
+                        "status": ["ERR", {"code": response.code}],
+                        "object": "chat.completion",
                         "created": time.time(),
-                        "model": "GPT-3.5-turbo",
-                        "result": [
-                            {}
-                        ]
+                        "model": "gpt-3.5-turbo",
+                        "choices": []
                     }
         return output
