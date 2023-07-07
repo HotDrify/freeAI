@@ -5,7 +5,7 @@ from freeAI import lockgpt
 import asyncio
 
 async def main():
-    result = await lockgpt.Running.main([{"role": "user", "content": "Hello! what language model are you?"}])
+    result = await lockgpt.Completion.acreate("Hello! what language model are you?")
     print(result)
 
 loop = asyncio.get_event_loop()
@@ -15,31 +15,28 @@ loop.run_until_complete(main())
 result(OK):
 ```json
 {
-  'status': ['OK']
-  'created': 1687115742.184269,
-  'model': 'GPT-3.5-turbo',
-  'result': [
+  "status": ["OK"],
+  "object": "chat.completion",
+  "created": time.time(),
+  "model": "gpt-3.5-turbo",
+  "choices": [
     {
-      'messages': [{"role": "user", "content": "Hello! what language model are you?"}],
-      'content': 'Hello! what language model are you?', 'content': 'I am an AI language model created by OpenAI called GPT-3. I have been trained on a diverse range of internet text in order to be able to generate human-like responses to various prompts and questions.'
-    }
-  ]
+      "message": {
+        "content": "Hello! I am GPT-4, a large language model trained by OpenAI. I am designed to assist with answering questions, providing information, and engaging in conversation. How can I help you today?"
+       }
+     }
+   ]
 }
 ```
 result(error):
 ```json
 {
-  'status': [
-    {
-      "code": 500
-    }
-  ],
-  'created': 1687115742.184269,
-  'model': 'GPT-3.5-turbo',
-  'result': [
-    {}
-  ]
+  "status": ["ERR", {"code": 500}],
+  "object": "chat.completion",
+  "created": time.time(),
+  "model": "gpt-3.5-turbo",
+  "choices": []
 }
 ```
 Function's
-* Running.main(messages = **list**, temperature = int: **1**, proxies = json: **None**)
+* Completion.acreate(q = **str**, proxies = json: **None**)
