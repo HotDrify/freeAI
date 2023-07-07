@@ -1,7 +1,11 @@
 # freeAI
 there will be changes of all versions.
 
-## 1.1.6 (latest)
+## 1.2.0 (latest)
+> the names of the class and functions have been changed (Completion.acreate)
+> reworked json output as in original gpt 
+> added new model "fakeLLGPT" (GPT-3.5-turbo)
+## 1.1.6
 > added new model "AIchatOS" (GPT-3.5-turbo)
 ## 1.1.5
 > added new model "lockGPT" (GPT-3.5-turbo)
