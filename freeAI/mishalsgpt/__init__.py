@@ -56,7 +56,7 @@ class Completion:
                     }
                 else:
                     output = {
-                        "status": ["ERR", {"code": response.code}],
+                        "status": ["ERR", {"code": response.status}],
                         "object": "chat.completion",
                         "created": time.time(),
                         "model": "gpt-3.5-turbo-0301",
