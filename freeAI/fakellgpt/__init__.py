@@ -36,7 +36,7 @@ class Completion:
                         "choices": [
                           {
                             "message": {
-                              "content": text["choices"][0]["message"]["content"]
+                              "content": text.choices[0].message.content
                             }
                           }
                         ]
