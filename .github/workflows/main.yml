@@ -3,24 +3,25 @@ on:
   schedule:
     - cron: "1 * * * *"
 jobs:
-  aichatOS:
+  all:
     runs-on: ubuntu-latest
     steps:
-      - name: test response
+      - name: read models file
+        id: read
         run: |
-          echo "You online?"
-          curl -X POST \
-          https://api.aichatos.cloud/api/generateStream \
-          -H 'authority: api.aichatos.cloud' \
-          -H 'origin: https://chat9.yqcloud.top' \
-          -H 'referer: https://chat9.yqcloud.top/' \
-          -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
-          -H 'Content-Type: application/json' \
-          -d '{
-            "prompt": "always reply in the user language | are you online? (Just answer yes or no.)",
-            "userId": "#/chat/'"$(($(date +%s%N)/1000000))"'",
-            "network": true,
-            "apikey": "",
-            "system": "",
-            "withoutContext": false
-          }'
+          echo "models.json"
+          cat models.json
+      - name: testing models
+        id: testing
+        run: |
+          KEYS=$(jq 'keys[]' "${{ steps.read.outputs.path }}")
+          for key in $KEYS; do
+            API_URL=$(jq -r ".[$key].api" "${{ steps.read.outputs.path }}")
+            HEADERS=$(jq -r ".[$key].headers[]" "${{ steps.read.outputs.path }}")
+            DATA=$(jq -r ".[$key].data" "${{ steps.read.outputs.path }}")
+            echo "You online?"
+            curl -X POST \
+            "$API_URL" \
+            -H "$HEADERS" \
+            -d "$DATA"
+          done
