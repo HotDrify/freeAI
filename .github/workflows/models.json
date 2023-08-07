@@ -1,0 +1,20 @@
+{
+  "Aichatos": {
+    "api": "https://api.aichatos.cloud/api/generateStream",
+    "headers": [
+      "authority: api.aichatos.cloud",
+      "origin: https://chat9.yqcloud.top",
+      "referer: https://chat9.yqcloud.top/",
+      "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+      "Content-Type: application/json"
+    ],
+    "data": {
+      "prompt": "always reply in the user language | are you online? (Just answer yes or no.)",
+      "userId": "#/chat/'"$(($(date +%s%N)/1000000))"'",
+      "network": true,
+      "apikey": "",
+      "system": "",
+      "withoutContext": false
+    }
+  }
+}
