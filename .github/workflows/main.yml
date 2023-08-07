@@ -1,7 +1,7 @@
 name: API monitoring
 on:
   schedule:
-    - cron: "10 * * * *"
+    - cron: "1 * * * *"
 jobs:
   aichatOS:
     runs-on: ubuntu-latest
