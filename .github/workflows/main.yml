@@ -9,8 +9,8 @@ jobs:
       - name: read models file
         id: read
         run: |
-          echo "models.json"
-          cat models.json
+          echo "./models.json"
+          cat ./models.json
       - name: testing models
         id: testing
         run: |
