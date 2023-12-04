@@ -28,3 +28,5 @@ done!
 
 ## status check (soon)
 > when is it updated? > once every **~30 min**. [go to actions](https://github.com/HotDrify/freeAI/actions)
+
+(update soon)
